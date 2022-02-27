@@ -41,8 +41,9 @@ def build_vocab(captions_path, threshold):
                  .replace(';', '')
                  .replace('!', '')
                  .replace('?', '')
+                 .split(' ')
                  )
-        words = words.split(' ')
+        words.remove('')
         counter.update(words)
     words = [word for word, count in counter.items() if count >= threshold]
     vocab = Vocabulary()
